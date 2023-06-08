@@ -30,13 +30,13 @@ const filldata1 = (data)=>{
 
         // console.log(i.src);
 
-
         // if(data[count].firstChild.nodeName==("IMG")){
         //     console.log("Hola");
         // }
-        if(i.src=="http://localhost/proyecto2/crud.php#"){
-        console.log("Aqui va el src");
-        }
+        // if(i.src=="http://localhost/proyecto2/crud.php#"){
+        // console.log("Aqui va el src");
+        // }
+        console.log(data[count].type);
         if(data[count].textContent.indexOf("$")==0){
             data[count].textContent = data[count].textContent.replace('$', '');
         }

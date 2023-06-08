@@ -32,7 +32,7 @@
           </div>
       <div class="modal-body">
         <div class="container-fluid">
-        <form action="actualizar.php" enctype="multipart/form-data" method="post">
+        <form action="#" enctype="multipart/form-data" method="post">
         <div class="mb-3">
           <label for="" class="form-label">Nombre del producto</label>
           <input type="text"
@@ -153,7 +153,7 @@
           <td>$<?php echo $iterator['precio']; ?></td>
           <td><?php echo $iterator['descripcion']; ?></td>
           <td><img src="img/<?php echo $iterator['nombre_img'];  ?>" width="70px"  alt=""></td>
-          <td><button type="button" class="btn btn-primary editar" data-bs-toggle="modal" data-bs-target="#modalId"><i class="fa-sharp fa-solid fa-pen"></button></td>
+          <td><button class="btn btn-primary editar" data-bs-toggle="modal" data-bs-target="#modalId"><i class="fa-sharp fa-solid fa-pen"></button></td>
           <td><button name="" id="" onclick="return ventana(<?php echo $iterator['id']; ?>);" class="btn btn-danger" href="#" role="button"><i class="fa-sharp fa-solid fa-trash"></button></td>
         </tr>
         <?php } ?>
