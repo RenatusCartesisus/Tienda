@@ -1,11 +1,5 @@
 <?php include "php/conexion.php"; ?>
 
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId">
-  Launch
-</button> -->
-
-<!-- Modal -->
 <head>
 
   <title>Title</title>
@@ -32,16 +26,17 @@
           </div>
       <div class="modal-body">
         <div class="container-fluid">
-        <form action="#" enctype="multipart/form-data" method="post">
+        <form action="php/actualizar.php" enctype="multipart/form-data" method="post" enctype="multipart/form-data">
+          <input type="hidden" class="update" name="id">
         <div class="mb-3">
           <label for="" class="form-label">Nombre del producto</label>
           <input type="text"
-            class="form-control update" name="nombreU" id="" aria-describedby="helpId" placeholder="">
+            class="form-control update" name="nombre" id="" aria-describedby="helpId" placeholder="">
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Precio</label>
           <input type="text"
-            class="form-control update" name="precioU" id="" aria-describedby="helpId" placeholder="">
+            class="form-control update" name="precio" id="" aria-describedby="helpId" placeholder="">
         </div>
         <div class="mb-3">
           <label for="" class="form-label"></label>
@@ -50,11 +45,12 @@
         <div class="mb-3">
           <label for="" class="form-label">Imagen actual</label>
           <img src="#" class="update" alt="">
-          <!-- <input type="file" class="form-control update" name="fileU" id="" placeholder="" aria-describedby="fileHelpId"> -->
         </div>
-
+        <div class="mb-3">
+          <label for="" class="form-label">Seleccione un nuevo archivo</label>
+          <input type="file" class="form-control imagen" name="file" id="file" placeholder="" aria-describedby="fileHelpId">
+        </div>
         <input type="submit" class="btn btn-outline-success" name="submit" value="Enviar">
-`
     </form>
         </div>
       </div>
@@ -97,77 +93,40 @@
     </form>
   </div>
 </div>
-
-<!-- <div class="table-responsive col-7">
-    <table class="table table-primary">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Imagen</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Eliminar</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="">
-                <td scope="row">R1C1</td>
-                <td>R1C2</td>
-                <td>R1C3</td>
-                <td>dkwkwopwkok</td>
-                <td><a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fa-sharp fa-solid fa-pen"></i></a></td>
-                <td><a name="" id="" class="btn btn-danger" href="#" role="button"><i class="fa-sharp fa-solid fa-trash"></i></a></td>
-            </tr>
-            <tr class="">
-                <td scope="row">Item</td>
-                <td>Item</td>
-                <td>Item</td>
-                <td>dwjij</td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
 <div class="col-7">
   <table class="table table-hover" id="table">
   <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Imagen</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Eliminar</th>
-            </tr>
+  <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Eliminar</th>
+  </tr>
         </thead>
         <tbody>
         <?php 
         $imagen = mysqli_query($conexion, "SELECT * FROM `productos`");
         while($iterator = mysqli_fetch_array($imagen)){
         ?>
-        <tr>
+  <tr>
           <td><?php echo $iterator['id']; ?></td>
           <td><?php echo $iterator['nombre']; ?></td>
           <td>$<?php echo $iterator['precio']; ?></td>
           <td><?php echo $iterator['descripcion']; ?></td>
-          <td><img src="img/<?php echo $iterator['nombre_img'];  ?>" width="70px"  alt=""></td>
+          <td><img src="img/<?php echo $iterator['nombre_img'];  ?>" width="70px"  alt="<?php echo $iterator['nombre_img'];  ?>"></td>
           <td><button class="btn btn-primary editar" data-bs-toggle="modal" data-bs-target="#modalId"><i class="fa-sharp fa-solid fa-pen"></button></td>
           <td><button name="" id="" onclick="return ventana(<?php echo $iterator['id']; ?>);" class="btn btn-danger" href="#" role="button"><i class="fa-sharp fa-solid fa-trash"></button></td>
         </tr>
         <?php } ?>
-
         </tbody>
   </table>
-
 </div>
-
-<div class="container">
+    <div class="container">
   <button type="button" class="btn btn-primary">Regresar</button>
-</div>
-
-<!-- <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload"> -->
+    </div>
 </div>
 
 <script>

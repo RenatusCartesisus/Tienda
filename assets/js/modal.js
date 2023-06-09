@@ -18,38 +18,39 @@ botones.forEach(editar => {
             let data = e.target.parentElement.parentElement.parentElement.children;
             filldata1(data);   
         }
+        console.log(document.getElementById('file').value);
     });
 });
 
 const filldata1 = (data)=>{
     let count = 0;
+    //let nombre = inputs[4].src;
     for(let i of inputs){
-        count++;
-        // console.log(data[count].firstChild.nodeName);
-        // console.log(i.src);
-
-        // console.log(i.src);
-
-        // if(data[count].firstChild.nodeName==("IMG")){
-        //     console.log("Hola");
-        // }
-        // if(i.src=="http://localhost/proyecto2/crud.php#"){
-        // console.log("Aqui va el src");
-        // }
-        console.log(data[count].type);
-        if(data[count].textContent.indexOf("$")==0){
-            data[count].textContent = data[count].textContent.replace('$', '');
-        }
-        else if(i.src=="http://localhost/proyecto2/crud.php#"){
-        //  console.log(data[count].firstChild.src);
-         i.src=data[count].firstChild.src;
-         i.style.width="100%";
-        //  break;
+       
+            if(data[count].textContent.indexOf("$")==0){
+                data[count].textContent = data[count].textContent.replace('$', '');
+                i.value=data[count].textContent;
+            }
+            else{
+                i.value=data[count].textContent;
+            }
+            if(i.src){
+                let directorio = i.src;
+                // console.log(directorio.toUpperCase());
+                if(directorio=="http://localhost/proyecto2/crud.php#"||directorio.includes("/img")){
+                //  console.log(data[count].firstChild.src);
+                 i.src=data[count].firstChild.src;
+                 i.style.width="100%";
+                //  break;
+                }
+            }
+            count++;
+            console.log(i.value);
         }
         // else{
+
         // }
-        i.value=data[count].textContent;
-    }
+    // }
     // console.log(data.target);
 }
 
